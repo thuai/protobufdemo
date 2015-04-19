@@ -1,0 +1,31 @@
+syntax="proto2";
+import "Base.proto";
+
+package MiU;
+
+//// 用户注册接口
+message RegisterReq
+{
+    required string uid = 1;        // 用户uid, 计算规则：md5（appid+openid）
+	required UserBaseInfo reg_info = 2;   // 注册信息
+}
+
+message RegisterRsp
+{
+    optional sint32 retcode = 1;
+	optional string uid = 2;
+}
+
+
+//// 获取资料接口
+message GetInfoReq
+{
+    optional string uid = 1;              // 用户uid, 计算规则：md5（appid+openid）
+	
+}
+
+message GetInfoRsp
+{
+    optional sint32 retcode = 1;
+	optional UserBaseInfo reg_info = 2;   // 注册信息
+}

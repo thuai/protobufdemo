@@ -1,0 +1,41 @@
+syntax="proto2";
+
+package MiU;
+
+message ReqHead
+{
+    optional string uid  = 1;    // 用户UID
+	optional string skey = 2;    // 用户请求凭据，2小时更换一次
+    optional string command = 3; // 用户请求命令
+	optional bytes body = 4;     // 用户请求内容，对protobuf数据的base64加密
+	optional uint32 c_ts = 5;    // 用户请求时间（可选字段）
+	optional uint32 platform = 6;  // 客户端平台（可选字段）
+}
+
+message RspHead
+{
+	optional string skey = 1;    // 服务返回的登录票据
+	optional string s_ts = 2;    // 服务返回的登录票据
+    optional string command = 3; // 服务返回的请求命令
+	optional sint32 retcode = 4; // 服务返回的调用结果
+	optional bytes content = 5;  // 服务返回的内容，对protobuf结构化数据的base64加密
+}
+
+
+message UserBaseInfo
+{
+    optional sint32 avg  = 1;       // 年龄
+    optional sint32 sex  = 2;       // 性别
+    optional string nick = 3;       // 昵称 
+	optional string icon_url  = 4;  // 图像
+	optional string loginskey = 5;  // 登录签名
+	optional string logintime = 6;  // 登录时间
+	optional string email     = 7;  // 注册手机
+	optional string mobileno  = 8;  // 注册手机
+	optional string openid    = 9;  // 用户openid信息
+	optional sint32 from      = 10; // 注册来源(0、未表明来源（手机号），1、手机QQ，2、微信)
+	optional string prov      = 11; // 省
+	optional string city      = 12; // 市
+	optional string zone      = 13; // 区
+	optional string ishow     = 14; // 自我介绍
+}
